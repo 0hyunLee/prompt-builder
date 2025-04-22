@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Prompt Builder</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    form div { margin-bottom: 8px; }
+    select { min-width: 160px; min-height: 80px; }
+    #result, #metrics { margin-top: 16px; }
+    #preview img { max-width: 300px; margin-top: 16px; display: block; }
+    #copyBtn { margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>프롬프트 생성기</h1>
+  <form id="prompt-form"></form>
+
+  <!-- 결과 출력 영역 -->
+  <pre id="result"></pre>
+  <div id="metrics"></div>
+  <button id="copyBtn">복사하기</button>
+
+  <!-- AI 미리보기 -->
+  <div id="preview"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+{
+  "Aesthetic": ["Glitchcore","Dreamy","Modern","Horror","Lo-Fi","Vaporwave"],
+  "Art": ["Collage","Pastel baroque","Illustration","Anime","Pixel"],
+  "Composition": ["Centered subject","Rule of thirds","Symmetrical"],
+  "Film": ["Disposable film","Damaged film","Heavy grain film","VHS"],
+  "General": ["Cinematic","Portrait photography","Product photography"],
+  "Pose": ["Relaxed","In motion","Surreal anatomy"],
+  "Text": ["Theater marquee","Neon sign","Balloon"],
+  "Texture": ["Scanner","Static hologram","Chrome","Piñata"],
+  "Scene": ["Forest","Urban","Beach","Mountain","Desert","Underwater","Space","Cityscape","Countryside","Rainy street"],
+  "Lighting": ["Golden hour","Rembrandt","Butterfly","Rim","Soft light","Hard light","Backlighting","Ambient","Studio","Neon"],
+  "Color": ["Warm","Cool","Pastel","Monochrome","Vibrant","Muted","High contrast","Complementary","Analogous","Triadic"],
+  "Angle": ["Eye level","High angle","Low angle","Bird's eye view","Worm's eye view","Dutch angle","Over the shoulder","Close-up","Wide shot","Side view"],
+  "Mood": ["Happy","Sad","Mystical","Eerie","Romantic","Tense","Calm","Energetic","Melancholic","Dramatic"],
+  "__keywords": {
+    "Aesthetic": {
+      "Glitchcore": ["glitch art","glitchcore","grain texture","datamosh","melting pixels","chromatic aberration","CRT static accents","low-contrast","visual anomalies"],
+      "Dreamy":    ["dreamlike","soft focus","light leaks","star lens flare","fine grain","soft gaussian blur","ethereal glow","motion blur"],
+      "Modern":    ["photorealistic","sharp","clean","minimalistic","dark blue background","35mm"],
+      "Horror":    ["high contrast","desaturated","unstable movement","dark color palette","horror aesthetic","terrifying figure","dark background"],
+      "Lo‑Fi":     ["hand drawn panel","lo-fi 1980s japanese magazine art style","muted tones","pastel color palette","soft grain","nostalgic aesthetic","animated"],
+      "Vaporwave": ["vaporwave","saturated pink, purple, and blues","retro aesthetics","glowing neon elements","90s design elements"]
+    },
+    "Art": {
+      "Collage":          ["collage style","mixed media approach","printed paper cutouts","torn paper edges"],
+      "Pastel baroque":   ["elegant baroque artwork","elegant artistry","muted cool pastel color palette","pops of pastel warmth","smooth oil painting with finely blended shading","floral motifs","elaborate","chaotic yet elegant scene"],
+      "Illustration":     ["storybook illustration","thick lines","clean bold shapes","hand-drawn quality","precise ink-like lines"],
+      "Anime":            ["anime-style illustration","slightly blurry background","flat shading"],
+      "Pixel":            ["pixel art","pixelated scene reminiscent of a nostalgic video game"]
+    },
+    "Composition": {
+      "Centered subject": ["[subject] in center frame"],
+      "Rule of thirds":    ["cinematic still","rule of thirds composition"],
+      "Symmetrical":       ["gentle symmetry","symmetrical composition"]
+    },
+    "Film": {
+      "Disposable film":   ["classic disposable flash photography taken at night","vignette","slight overexposure","muted color"],
+      "Damaged film":      ["grainy texture","slightly overexposed","muted colors","visible film scratches","damaged film","light leaks","spontaneous","timeless","soft focus","Polaroid aesthetic","historical wear and tear"],
+      "Heavy grain film":  ["heavy film grain","visible noise","visible dust particles"],
+      "VHS":               ["shot on VHS","VHS artifacts","tracking lines","worn film texture","analog color bleeding","grainy quality"]
+    },
+    "General": {
+      "Cinematic":             ["Cinematic photograph","movie still","theatrical","anamorphic lens","35mm","professional composition"],
+      "Portrait photography":  ["Portrait","diffused lighting","editorial portrait","fashion portrait"],
+      "Product photography":   ["product photography","minimalist","clean","bright lighting"]
+    },
+    "Pose": {
+      "Relaxed":         ["relaxed pose","elegant"],
+      "In motion":       ["natural motion blur emphasizes the subject's movement against the still environment"],
+      "Surreal anatomy": ["the [subject] curves and bends impossibly","distorted","warped","squished","extremely deformed and exaggerated","surreal anatomy","cinematic","avant garde"]
+    },
+    "Text": {
+      "Theater marquee": ["theater with a large marquee sign that boldly spells [word]"],
+      "Neon sign":        ["neon sign that spells [word]"],
+      "Balloon":          ["balloons forming the word [word]"]
+    },
+    "Texture": {
+      "Scanner":        ["black and white scanned image","vintage photocopy","scan stretch effect","grain texture","gritty"],
+      "Static hologram":["static hologram in the shape of [subject]","CRT static","soft natural glow"],
+      "Chrome":         ["liquid chrome","reflective","shiny","iridescent sheen"],
+      "Piñata":         ["piñata [subject]","thin tissue paper in assorted colors"]
+    },
+    "Scene": {
+      "Forest":       ["misty forest","dappled sunlight","dense trees","forest floor foliage"],
+      "Urban":        ["city skyline","street lights","skyscrapers","crowded streets"],
+      "Beach":        ["golden sand","ocean waves","sun glare","palm trees"],
+      "Mountain":     ["snow‑capped peaks","rocky cliffs","high altitude atmosphere","misty mountains"],
+      "Desert":       ["sand dunes","harsh sunlight","arid landscape","wind‑swept sand"],
+      "Underwater":   ["coral reef","sunbeams through water","schools of fish","rising bubbles"],
+      "Space":        ["starfield background","planets","nebulae","cosmic dust"],
+      "Cityscape":    ["urban skyline","evening lights","reflections","city at dusk"],
+      "Countryside":  ["rolling hills","farm fields","windmill","rustic cottage"],
+      "Rainy street": ["wet pavement","puddles","reflections","raindrops on glass"]
+    },
+    "Lighting": {
+      "Golden hour": ["warm orange glow","long soft shadows","low sun angle","soft backlight"],
+      "Rembrandt":   ["triangle of light on cheek","one side bright, one in shadow","dramatic contrast"],
+      "Butterfly":   ["shadow under nose","even frontal light","glamorous portrait"],
+      "Rim":         ["highlight edge","silhouette outline","strong backlight"],
+      "Soft light":  ["diffused lighting","soft shadows","even skin tones"],
+      "Hard light":  ["sharp shadows","high contrast","specular highlights"],
+      "Backlighting":["subject lit from behind","halo effect","silhouette"],
+      "Ambient":     ["natural light","soft overall exposure","no direct source"],
+      "Studio":      ["controlled flashes","light modifiers","neutral background"],
+      "Neon":        ["colorful glow","reflections","high saturation"]
+    },
+    "Color": {
+      "Warm":         ["warm tones","reds and oranges","cozy vibe","sunset palette"],
+      "Cool":         ["cool tones","blues and greens","refreshing atmosphere","aquatic palette"],
+      "Pastel":       ["soft pastel palette","pink, mint, lavender","light and airy","dreamy colors"],
+      "Monochrome":   ["black and white","single hue","shadows and highlights","grayscale"],
+      "Vibrant":      ["bright saturated colors","high saturation","electric vibe","bold hues"],
+      "Muted":        ["desaturated tones","soft neutrals","earth tones","subdued palette"],
+      "High contrast":["strong light‑dark contrast","bold color juxtaposition","dramatic palette"],
+      "Complementary":["opposite color pairing","vibrant contrast","dynamic harmony"],
+      "Analogous":    ["adjacent colors on wheel","harmonious blend","soft transitions"],
+      "Triadic":      ["three‑color harmony","primary color scheme","balanced accents"]
+    },
+    "Angle": {
+      "Eye level":        ["natural perspective","neutral viewpoint"],
+      "High angle":       ["camera looking down","diminished subject","vantage from above"],
+      "Low angle":        ["camera looking up","empowering perspective","dramatic emphasis"],
+      "Bird's eye view":  ["overhead shot","top-down perspective","entire scene visible"],
+      "Worm's eye view":  ["extreme low angle","ground-level perspective","towering subject"],
+      "Dutch angle":      ["tilted horizon","canted shot","dynamic tension"],
+      "Over the shoulder":["view from behind subject","partial subject frame","contextual perspective"],
+      "Close-up":         ["tight frame","facial detail","intimate focus"],
+      "Wide shot":        ["establishing shot","environment inclusion","broad context"],
+      "Side view":        ["profile angle","silhouette emphasis"]
+    },
+    "Mood": {
+      "Happy":        ["upbeat","joyful atmosphere","bright colors","playful energy"],
+      "Sad":          ["melancholic","blue tones","soft rain","reflective mood"],
+      "Mystical":     ["ethereal glow","soft fog","otherworldly light","magical aura"],
+      "Eerie":        ["low light","long shadows","creeping fog","uneasy tension"],
+      "Romantic":     ["warm candlelight","soft focus","intimate setting","gentle glow"],
+      "Tense":        ["high contrast","harsh shadows","tight framing","dramatic tension"],
+      "Calm":         ["soft pastel tones","even lighting","tranquil atmosphere","gentle breeze"],
+      "Energetic":    ["vibrant colors","dynamic motion","high saturation","lively composition"],
+      "Melancholic":  ["desaturated palette","driving rain","pensive expression","slow shutter blur"],
+      "Dramatic":     ["strong chiaroscuro","spotlight effect","deep shadows","intense focus"]
+    }
+  }
+}
