@@ -1,0 +1,86 @@
+/* styles.css */
+
+/* 1) 전체 바탕과 폰트 설정 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+  }
+  
+  /* 2) 가운데 정렬 컨테이너 */
+  .container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  /* 3) 제목 */
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* 4) 폼 요소 공통 스타일 */
+  #prompt-form > div {
+    margin-bottom: 1rem;
+  }
+  #prompt-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  /* 5) select 박스 스타일 */
+  #prompt-form select {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fafafa;
+  }
+  
+  /* 6) 체크박스 + 라벨 스타일 */
+  #prompt-form input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.1);
+  }
+  #prompt-form div > label {
+    cursor: pointer;
+  }
+  
+  /* 7) 버튼 스타일 */
+  button {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  button:hover {
+    background: #0056b3;
+  }
+  
+  /* 8) 결과 영역 */
+  #result {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f0f8ff;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+    white-space: pre-wrap;        /* 줄바꿈 그대로 출력 */
+    font-family: Consolas, monospace;
+    font-size: 0.95rem;
+  }
+  
