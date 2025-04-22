@@ -1,13 +1,18 @@
 // ================= app.js =================
 
-// ❶ 한글 표시용 매핑 테이블
+// ❶ 모든 종류의 하이픈(– — ­)을 ASCII '-' 하나로 바꿔주는 함수
+function normalizeHyphen(str) {
+  return str.replace(/[\u2011\u2012\u2013\u2014\u2015]/g, '-');
+}
+
+// ❷ 한글 표시용 매핑 테이블
 const DISPLAY_LABELS = {
   Aesthetic: {
     "Glitchcore": "글리치코어",
     "Dreamy":     "몽환적",
     "Modern":     "모던",
     "Horror":     "호러",
-    "Lo‑Fi":      "로파이",
+    "Lo-Fi":      "로파이",
     "Vaporwave":  "베이퍼웨이브"
   },
   Art: {
@@ -111,14 +116,14 @@ const DISPLAY_LABELS = {
   }
 };
 
-// ❷ 한글 키워드 맵 (영어 순서와 1:1 대응)
+// ❸ 한글 키워드 맵
 const DISPLAY_KEYWORDS = {
   Aesthetic: {
     "Glitchcore": ["글리치 아트","글리치코어","그레인 텍스처","데이터모쉬","멜팅 픽셀","크로매틱 애버레이션","CRT 정적","로우 콘트라스트","비주얼 이상현상"],
     "Dreamy":     ["몽환적","소프트 포커스","라이트 릭","별 렌즈 플레어","파인 그레인","소프트 블러","에테리얼 글로우","모션 블러"],
     "Modern":     ["포토리얼리스틱","샤프","클린","미니멀","다크 블루 배경","35mm"],
     "Horror":     ["하이 콘트라스트","탈채도","불안정한 움직임","다크 컬러","호러 감성","무서운 피사체","어두운 배경"],
-    "Lo‑Fi":      ["핸드 드로잉 패널","1980s 일본 로파이 잡지","무채색 톤","파스텔 팔레트","부드러운 그레인","노스탤직 감성","애니메이티드"],
+    "Lo-Fi":      ["핸드 드로잉 패널","1980s 일본 로파이 잡지","무채색 톤","파스텔 팔레트","부드러운 그레인","노스탤직 감성","애니메이티드"],
     "Vaporwave":  ["베이퍼웨이브","핑크·퍼플·블루","레트로","네온 글로우","90s 디자인"]
   },
   Art: {
@@ -222,30 +227,46 @@ const DISPLAY_KEYWORDS = {
   }
 };
 
-// ❷ options.json 불러오기 → 렌더링
+// ❹ options.json 불러오기 → 하이픈 정규화 → 렌더링
 async function loadOptions() {
-  const res  = await fetch('options.json');
-  const opts = await res.json();
+  const res     = await fetch('options.json');
+  const rawOpts = await res.json();
+  const opts    = { __keywords: {} };
+
+  // top‑level 옵션과 키워드 맵 모두 정규화
+  for (const [cat, arr] of Object.entries(rawOpts)) {
+    if (cat === '__keywords') continue;
+    const nCat = normalizeHyphen(cat);
+    opts[nCat] = arr.map(v => normalizeHyphen(v));
+    const rawKw = rawOpts.__keywords?.[cat] || {};
+    opts.__keywords[nCat] = {};
+    for (const [optVal, kwList] of Object.entries(rawKw)) {
+      const nVal = normalizeHyphen(optVal);
+      opts.__keywords[nCat][nVal] =
+        kwList.map(k => normalizeHyphen(k));
+    }
+  }
+
   renderSelects(opts);
 }
 
-// ❸ 셀렉트 생성 + 체크박스 표시
+// ❺ 셀렉트 & 체크박스 생성
 function renderSelects(opts) {
   const form = document.getElementById('prompt-form');
   form.innerHTML = '';
   const cats = Object.keys(opts).filter(k => k !== '__keywords');
 
   cats.forEach(cat => {
-    const vals   = opts[cat];
-    const kwMap  = opts.__keywords[cat]   || {};
-    const lbl    = DISPLAY_LABELS[cat]    || {};
-    const kwLbl  = DISPLAY_KEYWORDS[cat]  || {};
+    const vals  = opts[cat];
+    const kwMap = opts.__keywords[cat] || {};
+    const lbl   = DISPLAY_LABELS[cat]  || {};
+    const kwLbl = DISPLAY_KEYWORDS[cat]|| {};
 
     const wrap = document.createElement('div');
     wrap.style.marginBottom = '12px';
     wrap.innerHTML = `<label>${cat}: </label>`;
 
-    // — 1차 select
+    // 1차 select
     const sel1 = document.createElement('select');
     sel1.name = cat;
     sel1.innerHTML =
@@ -256,46 +277,41 @@ function renderSelects(opts) {
       }).join('');
     wrap.append(sel1);
 
-    // — 2차 체크박스 컨테이너
-    const boxContainer = document.createElement('div');
-    boxContainer.style.marginLeft = '16px';
-    wrap.append(boxContainer);
+    // 2차 체크박스
+    const box = document.createElement('div');
+    box.style.marginLeft = '16px';
+    wrap.append(box);
 
-    // 1차 변경 시
     sel1.addEventListener('change', () => {
-      boxContainer.innerHTML = '';
-      const origList  = kwMap[sel1.value] || [];
-      const labelList = kwLbl[sel1.value] || [];
-
-      if (origList.length) {
-        origList.forEach((origKw, i) => {
+      box.innerHTML = '';
+      const orig = kwMap[sel1.value] || [];
+      const klab = kwLbl[sel1.value]|| [];
+      if (orig.length) {
+        orig.forEach((kw, i) => {
           const id = `chk-${cat}-${i}`;
           const cb = document.createElement('input');
           cb.type  = 'checkbox';
           cb.id    = id;
           cb.name  = `${cat}-kw`;
-          cb.value = origKw;
-
+          cb.value = kw;
           const lb = document.createElement('label');
           lb.htmlFor = id;
-          const koKw = labelList[i] || origKw;
-          lb.textContent = `${origKw} (${koKw})`;
-
+          lb.textContent = `${kw} (${klab[i]||kw})`;
           const row = document.createElement('div');
           row.append(cb, lb);
-          boxContainer.append(row);
+          box.append(row);
         });
       } else {
-        const none = document.createElement('div');
-        none.textContent = '(키워드 없음)';
-        boxContainer.append(none);
+        const n = document.createElement('div');
+        n.textContent = '(키워드 없음)';
+        box.append(n);
       }
     });
 
     form.append(wrap);
   });
 
-  // — 생성 버튼
+  // 생성 버튼
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.textContent = '프롬프트 생성';
@@ -304,15 +320,11 @@ function renderSelects(opts) {
   form.append(btn);
 }
 
-// ❹ 선택값 수집 및 프롬프트 생성
+// ❻ 프롬프트 조합
 function generatePrompt() {
   const parts = [];
-
-  // 1차
   document.querySelectorAll('#prompt-form select:not([multiple])')
-    .forEach(sel => { if (sel.value) parts.push(sel.value); });
-
-  // 2차
+    .forEach(s => s.value && parts.push(s.value));
   document.querySelectorAll('#prompt-form input[type="checkbox"]:checked')
     .forEach(cb => parts.push(cb.value));
 
@@ -322,16 +334,15 @@ function generatePrompt() {
   document.getElementById('result').textContent = out;
 }
 
-// 초기화
-// 복사하기 함수: #result 텍스트를 클립보드에 쓰고 알림
+// ❼ 복사하기
 function copyToClipboard() {
-  const text = document.getElementById('result').textContent;
-  navigator.clipboard.writeText(text)
+  const txt = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(txt)
     .then(() => alert('프롬프트 복사'))
-    .catch(err => alert('복사 실패: ' + err));
+    .catch(e => alert('복사 실패: ' + e));
 }
 
-// 페이지 준비되면 옵션 로드 + 복사 버튼 연결
+// ❽ 초기화
 window.addEventListener('DOMContentLoaded', () => {
   loadOptions();
   document.getElementById('copyBtn')
